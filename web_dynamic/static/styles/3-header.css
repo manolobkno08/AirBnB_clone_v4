@@ -1,0 +1,31 @@
+header {
+    align-items        : flex-end;
+    background-image   : url("../images/logo.png");
+    background-repeat  : no-repeat;
+    background-color   : #fff;
+    background-position: 20px 50%;
+
+    display        : flex;
+    height         : 70px;
+    flex-direction : column;
+    justify-content: center;
+    width          : 100%;
+    border-bottom  : 1px solid #ccc;
+}
+
+
+header #api_status {
+    border-radius        : 50%;
+    background-color     : #cccccc;
+    height               : 40px;
+    width                : 40px;
+    margin-right         : 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius   : 50%;
+    -ms-border-radius    : 50%;
+    -o-border-radius     : 50%;
+}
+
+header #api_status.available {
+    background-color: #ff545f;
+}
