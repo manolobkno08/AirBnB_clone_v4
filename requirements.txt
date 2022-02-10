@@ -1,0 +1,16 @@
+attrs==21.4.0
+click==8.0.3
+flasgger==0.9.5
+Flask==2.0.2
+Flask-Cors==3.0.10
+importlib-resources==5.4.0
+itsdangerous==2.0.1
+Jinja2==3.0.3
+jsonschema==4.4.0
+MarkupSafe==2.0.1
+mistune==2.0.2
+pyrsistent==0.18.1
+PyYAML==6.0
+six==1.16.0
+Werkzeug==2.0.3
+zipp==3.7.0
