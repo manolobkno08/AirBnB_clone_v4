@@ -10,6 +10,8 @@ $(function () {
 				return item !== toRemove;
 			});
 		}
-		$('.amenities h4').text(newList.join(', '));
+		if (newList.length <= 3) {
+			$('.amenities h4').text(newList.join(', '));
+		}
 	});
 });
