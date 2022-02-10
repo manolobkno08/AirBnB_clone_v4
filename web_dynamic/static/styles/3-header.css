@@ -3,22 +3,23 @@ header {
     height: 70px;
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
-}
-
-header .logo {
     background: url("../images/logo.png") no-repeat;
     left: 20px;
-    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-header #api_status {
-    align-items: right;
-    border-radius: 40px;
+#api_status {
+    border-radius: 50%;
     background-color: #cccccc;
-    -webkit-border-radius: 40px;
-    -moz-border-radius: 40px;
-    -ms-border-radius: 40px;
-    -o-border-radius: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 30px;
 }
 
 header .available {
