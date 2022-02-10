@@ -6,7 +6,7 @@ const CheckStatus = async () => {
   });
 };
 const ProcessOutput = (output = '', limit = '') => {
-  // Processing output to handle a limit of diplayd chars
+  // Processing output to handle a limit of diplayed chars
   return output.length > limit ? `${output.slice(0, limit)}...` : output;
 };
 $('document').ready(function () {
@@ -17,7 +17,7 @@ $('document').ready(function () {
     // Catching click event for checkbox
     if ($(this).is(':checked')) {
       newList.push($(this).attr('data-name'));
-    } else if (!$(this).is(':checked')) {
+    } else {
       const toRemove = $(this).attr('data-name');
       newList = newList.filter((item) => {
         return item !== toRemove;
