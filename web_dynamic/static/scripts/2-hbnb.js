@@ -5,11 +5,15 @@ const CheckStatus = async () => {
     if (data.status === 'OK') { $('div#api_status').addClass('available'); } else { $('div#api_status').removeClass('available'); }
   });
 };
-
+const ProcessOutput = (output = '', limit = '') => {
+  // Processing output to handle a limit of diplayd chars
+  return output.length > limit ? `${output.slice(0, limit)}...` : output;
+};
 $('document').ready(function () {
   CheckStatus();
   let newList = [];
-  $("input[type='checkbox']").click(() => {
+  $("input[type='checkbox']").click(function () {
+    console.log($(this).attr('data-name'));
     // Catching click event for checkbox
     if ($(this).is(':checked')) {
       newList.push($(this).attr('data-name'));
@@ -19,6 +23,6 @@ $('document').ready(function () {
         return item !== toRemove;
       });
     }
-    $('.amenities h4').text(newList.join(', '));
+    $('.amenities h4').text(ProcessOutput((newList.join(', ')), 30));
   });
 });
