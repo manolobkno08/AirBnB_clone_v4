@@ -1,6 +1,6 @@
 const CheckStatus = async () => {
-  // Checking status of server in port 5000
-  const url = `http://${window.location.hostname}:5000/api/v1/status`;
+  // Checking status of server in port 5001
+  const url = `http://${window.location.hostname}:5001/api/v1/status`;
   await $.get(url, (data) => {
     if (data.status === 'OK') { $('div#api_status').addClass('available'); } else { $('div#api_status').removeClass('available'); }
   });
