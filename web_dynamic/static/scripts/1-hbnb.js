@@ -10,11 +10,5 @@ $(function () {
       });
     }
     $('.amenities h4').text(newList.join(', '));
-    // if (newList.length <= 2) {
-    // 	$('.amenities h4').text(newList.join(', '));
-    // }
-    // else if (newList.length > 2) {
-    // 	$('.amenities h4').text(newList.join(', ' + '...'));
-    // }
   });
-});
+})

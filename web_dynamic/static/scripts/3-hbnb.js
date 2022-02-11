@@ -32,18 +32,18 @@ $('document').ready(function () {
   });
 });
 
-
 const GetPlaces = async () => {
   // Makes a request to the API to get the places
   const url = `http://${window.location.hostname}:5001/api/v1/places_search`;
-  return places = await $.ajax({
+  const places = await $.ajax({
     type: 'POST',
     url,
     data: '{}',
     dataType: 'json',
-    contentType: 'application/json',
+    contentType: 'application/json'
   });
-}
+  return places;
+};
 const DrawPlaces = async () => {
   const places = await GetPlaces();
   let ToPrint = '';
@@ -74,7 +74,8 @@ const DrawPlaces = async () => {
             </div>
           </article>
         `;
+    return true;
   });
   $('.places').html(ToPrint);
-}
+};
 DrawPlaces();
