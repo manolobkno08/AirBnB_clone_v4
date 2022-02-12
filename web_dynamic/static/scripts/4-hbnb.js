@@ -54,10 +54,9 @@ async function DrawFilteredPlaces(AmenitiesDictionary = '') {
   // Print filtered places in the html tag
   const places = await GetFilteredPlaces(AmenitiesDictionary);
   let ToPrintUser = '';
-  let ToPrint = '';
   places.map(async (place, i) => {
     const user = await GetUser(place.user_id);
-    ToPrint += `
+    const ToPrint = `
           <article key = ${i}>
             <h2>${place.name}</h2>
             <div class = 'price_by_night'>
