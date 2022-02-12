@@ -7,7 +7,7 @@ window.onload = function () {
   HandleFilterPlacesByAmenities(AmenitiesDictionary);
 };
 
-async function CheckStatus () {
+async function CheckStatus() {
   // Checking status of server in port 5001
   const url = `http://${window.location.hostname}:5001/api/v1/status`;
   await $.get(url, (data) => {
@@ -18,11 +18,11 @@ async function CheckStatus () {
     $('div#api_status').removeClass('available');
   });
 }
-function ProcessOutput (output = '', limit = '') {
+function ProcessOutput(output = '', limit = '') {
   // Processing output to handle a limit of diplayed chars
   return output.length > limit ? `${output.slice(0, limit)}...` : output;
 }
-async function HandleSelectedAmenities (AmenitiesDictionary = '') {
+async function HandleSelectedAmenities(AmenitiesDictionary = '') {
   $("input[type='checkbox']").click(function () {
     // Catching click event for checkbox
     if ($(this).is(':checked')) {
@@ -33,7 +33,7 @@ async function HandleSelectedAmenities (AmenitiesDictionary = '') {
     $('.amenities h4').text(ProcessOutput((Object.values(AmenitiesDictionary).join(', ')), 30));
   });
 }
-async function GetFilteredPlaces (AmenitiesDictionary = '') {
+async function GetFilteredPlaces(AmenitiesDictionary = '') {
   // Gets the filtered places
   const url = `http://${window.location.hostname}:5001/api/v1/places_search`;
   const places = await $.ajax({
@@ -45,18 +45,20 @@ async function GetFilteredPlaces (AmenitiesDictionary = '') {
   });
   return places;
 }
-async function HandleFilterPlacesByAmenities (AmenitiesDictionary = '') {
+async function HandleFilterPlacesByAmenities(AmenitiesDictionary = '') {
   $('button').click(function () {
     DrawFilteredPlaces(AmenitiesDictionary);
   });
 }
-async function DrawFilteredPlaces (AmenitiesDictionary = '') {
+async function DrawFilteredPlaces(AmenitiesDictionary = '') {
   // Print filtered places in the html tag
   const places = await GetFilteredPlaces(AmenitiesDictionary);
+  let ToPrintUser = '';
   let ToPrint = '';
-  places.map((place, i) => {
+  places.map(async (place, i) => {
+    const user = await GetUser(place.user_id);
     ToPrint += `
-          <article>
+          <article key = ${i}>
             <h2>${place.name}</h2>
             <div class = 'price_by_night'>
               <p>$${place.price_by_night}</p>
@@ -76,12 +78,21 @@ async function DrawFilteredPlaces (AmenitiesDictionary = '') {
                 <p>${place.number_bathrooms}</p>
               </div>
             </div>
+            <b>Owner:</b>&nbsp;${(user).first_name} ${(user).last_name}
             <div class='description'>
               <p>${place.description}</p>
             </div>
           </article>
         `;
+    $('.places').append(ToPrint);
     return 1;
   });
-  $('.places').html(ToPrint);
 }
+async function GetUser(UserId) {
+  // Getting one user by id
+  const url = `http://${window.location.hostname}:5001/api/v1/users/${UserId}`;
+  const response = await fetch(url);
+  const user = await response.json();
+  return user;
+}
+
