@@ -11,4 +11,4 @@ $(function () {
     }
     $('.amenities h4').text(newList.join(', '));
   });
-})
+});
