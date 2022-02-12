@@ -54,6 +54,7 @@ async function DrawFilteredPlaces(AmenitiesDictionary = '') {
   // Print filtered places in the html tag
   const places = await GetFilteredPlaces(AmenitiesDictionary);
   let ToPrintUser = '';
+  $('.places').html('');
   places.map(async (place, i) => {
     const user = await GetUser(place.user_id);
     const ToPrint = `
